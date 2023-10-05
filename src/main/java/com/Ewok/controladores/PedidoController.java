@@ -23,5 +23,5 @@ public class PedidoController {
     }
 
     // Endpoint para obtener todos los pedidos (Método GET)
-    
+
 }
