@@ -13,7 +13,7 @@ public class PlatoController {
     @Autowired
     private PlatoRepository platoRepository;
 
-    @GetMapping("/")
+    @GetMapping("/todos")
     public List<Plato> obtenerTodosLosPlatos() {
         return platoRepository.findAll();
     }

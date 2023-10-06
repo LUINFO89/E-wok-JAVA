@@ -1,0 +1,58 @@
+CREATE DATABASE e_wok; USE e_wok;  
+-- Tabla para Usuarios CREATE TABLE usuarios (     
+id INT AUTO_INCREMENT PRIMARY KEY,     
+nombre VARCHAR(255) NOT NULL,     
+direccion VARCHAR(255),     
+telefono VARCHAR(15),     
+fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP );  
+-- Tabla para Platos en el Menú CREATE TABLE platos (     
+id INT AUTO_INCREMENT PRIMARY KEY,     
+nombre VARCHAR(255) NOT NULL,     
+descripcion TEXT,     
+precio DECIMAL(10, 2) NOT NULL );  
+-- Tabla para Pedidos CREATE TABLE pedidos (     
+id INT AUTO_INCREMENT PRIMARY KEY,     
+fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+estado VARCHAR(50) NOT NULL,     
+total_pedido DECIMAL(10, 2) NOT NULL,     
+usuario_id INT,     
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id) );  
+-- Tabla para Detalles de Pedidos 
+CREATE TABLE detalles_pedidos (     
+id INT AUTO_INCREMENT PRIMARY KEY,     
+cantidad INT NOT NULL,     
+subtotal DECIMAL(10, 2) NOT NULL,     
+pedido_id INT,     
+plato_id INT,     
+FOREIGN KEY (pedido_id) REFERENCES pedidos(id),     
+FOREIGN KEY (plato_id) REFERENCES platos(id) ); 
+
+
+
+-- Insertar datos de ejemplo en la tabla de usuarios
+INSERT INTO usuarios (nombre, direccion, telefono) VALUES
+('Usuario1', 'Dirección1', '123456789'),
+('Usuario2', 'Dirección2', '987654321'),
+('Usuario3', 'Dirección3', '555555555');
+
+-- Insertar datos de ejemplo en la tabla de platos
+INSERT INTO platos (nombre, descripcion, precio) VALUES
+('Plato1', 'Descripción del Plato 1', 10.99),
+('Plato2', 'Descripción del Plato 2', 8.50),
+('Plato3', 'Descripción del Plato 3', 12.75);
+
+-- Insertar datos de ejemplo en la tabla de pedidos
+INSERT INTO pedidos (estado, total_pedido, usuario_id) VALUES
+('En proceso', 25.49, 1),
+('Entregado', 18.25, 2),
+('En proceso', 30.00, 3);
+
+-- Insertar datos de ejemplo en la tabla de detalles de pedidos
+INSERT INTO detalles_pedidos (cantidad, subtotal, pedido_id, plato_id) VALUES
+(2, 21.98, 1, 1),
+(3, 25.50, 1, 2),
+(1, 12.75, 2, 3),
+(2, 17.00, 3, 1),
+(1, 8.50, 3, 2);
+
+

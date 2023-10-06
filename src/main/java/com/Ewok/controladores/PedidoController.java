@@ -13,7 +13,7 @@ public class PedidoController {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    @GetMapping("/")
+    @GetMapping("/todos")
     public List<Pedido> obtenerTodosLosPedidos() {
         return pedidoRepository.findAll();
     }
