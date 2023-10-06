@@ -1,15 +1,22 @@
 package com.Ewok.modelos;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
 import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 
 @Entity
+@Table(name = "detalles_pedidos")
 public class DetallePedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int cantidad;
-    private double subtotal;
+    private Integer cantidad;
+    private BigDecimal subtotal;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
@@ -19,8 +26,7 @@ public class DetallePedido {
     @JoinColumn(name = "plato_id")
     private Plato plato;
 
-    // Constructores, getters y setters
-
+    // Getters y setters
 
     public DetallePedido() {
     }
@@ -33,19 +39,19 @@ public class DetallePedido {
         this.id = id;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
@@ -64,5 +70,5 @@ public class DetallePedido {
     public void setPlato(Plato plato) {
         this.plato = plato;
     }
+    // Otras propiedades y métodos si es necesario
 }
-

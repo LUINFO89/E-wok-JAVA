@@ -3,27 +3,24 @@ package com.Ewok.modelos;
 import jakarta.persistence.*;
 
 
-import java.util.Date;
-import java.util.List;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 @Entity
+@Table(name = "pedidos")
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date fecha;
+    private Timestamp fechaPedido;
     private String estado;
-    private double total;
+    private BigDecimal totalPedido;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<DetallePedido> detallesPedido;
-
-    // Constructores, getters y setters
-
+    // Getters y setters
 
     public Pedido() {
     }
@@ -36,12 +33,12 @@ public class Pedido {
         this.id = id;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Timestamp getFechaPedido() {
+        return fechaPedido;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaPedido(Timestamp fechaPedido) {
+        this.fechaPedido = fechaPedido;
     }
 
     public String getEstado() {
@@ -52,12 +49,12 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public double getTotal() {
-        return total;
+    public BigDecimal getTotalPedido() {
+        return totalPedido;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotalPedido(BigDecimal totalPedido) {
+        this.totalPedido = totalPedido;
     }
 
     public Usuario getUsuario() {
@@ -67,12 +64,5 @@ public class Pedido {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    public List<DetallePedido> getDetallesPedido() {
-        return detallesPedido;
-    }
-
-    public void setDetallesPedido(List<DetallePedido> detallesPedido) {
-        this.detallesPedido = detallesPedido;
-    }
+    // Otras propiedades y métodos si es necesario
 }

@@ -3,21 +3,20 @@ package com.Ewok.modelos;
 import jakarta.persistence.*;
 
 
-import java.util.List;
+
+import java.math.BigDecimal;
 
 @Entity
+@Table(name = "platos")
 public class Plato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String descripción;
-    private double precio;
+    private String descripcion;
+    private BigDecimal precio;
 
-    @OneToMany(mappedBy = "plato")
-    private List<DetallePedido> detallesPedido;
-
-    // Constructores, getters y setters
+    // Getters y setters
 
 
     public Plato() {
@@ -39,27 +38,21 @@ public class Plato {
         this.nombre = nombre;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
-    public List<DetallePedido> getDetallesPedido() {
-        return detallesPedido;
-    }
-
-    public void setDetallesPedido(List<DetallePedido> detallesPedido) {
-        this.detallesPedido = detallesPedido;
-    }
+    // Otras propiedades y métodos si es necesario
 }

@@ -1,22 +1,20 @@
 package com.Ewok.modelos;
 
 import jakarta.persistence.*;
-import java.util.List;
+import java.security.Timestamp;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String dirección;
-    private String teléfono;
+    private String direccion;
+    private String telefono;
+    private Timestamp fechaRegistro;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Pedido> pedidos;
-
-    // Constructores, getters y setters
-
+    // Getters y setters
 
     public Usuario() {
     }
@@ -37,27 +35,28 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getDirección() {
-        return dirección;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirección(String dirección) {
-        this.dirección = dirección;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getTeléfono() {
-        return teléfono;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTeléfono(String teléfono) {
-        this.teléfono = teléfono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    public Timestamp getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setFechaRegistro(Timestamp fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
+    // Otras propiedades y métodos si es necesario
 }
